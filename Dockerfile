@@ -18,3 +18,5 @@ RUN apt-get update \
   && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch" \
   && chmod +x /usr/local/bin/gosu \
   && gosu nobody true
+
+USER 1001
