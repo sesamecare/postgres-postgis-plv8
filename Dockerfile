@@ -8,8 +8,8 @@ ENV GOSU_VERSION 1.16
 
 USER root
 
-COPY --from=builder /usr/lib/postgresql/16/lib/vector.so /opt/bitnami/postgresql/lib/
-COPY --from=builder /usr/share/postgresql/16/extension/vector* /opt/bitnami/postgresql/share/extension/
+COPY --from=builder /usr/lib/postgresql/16/lib/vector.so /usr/lib/postgresql/16/lib/
+COPY --from=builder /usr/share/postgresql/16/extension/vector* /usr/share/postgresql/16/extension/
 
 RUN apt-get update \
   && apt-cache showpkg postgis \
