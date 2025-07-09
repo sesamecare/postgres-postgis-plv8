@@ -24,4 +24,4 @@ RUN apt-get update \
   && chmod +x /usr/local/bin/gosu \
   && gosu nobody true
 
-USER 1001
+USER postgres
