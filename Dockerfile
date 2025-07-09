@@ -1,10 +1,15 @@
-FROM sibedge/postgres-plv8:14.9-3.0.0-bullseye
+FROM pgvector/pgvector:pg16 AS builder
+
+FROM sibedge/postgres-plv8:16.9-3.2.3-bookworm
 LABEL org.opencontainers.image.source="https://github.com/sesamecare/postgres-postgis-plv8"
 
-ENV PG_MAJOR 14
+ENV PG_MAJOR 16
 ENV GOSU_VERSION 1.16
 
 USER root
+
+COPY --from=builder /usr/lib/postgresql/16/lib/vector.so /opt/bitnami/postgresql/lib/
+COPY --from=builder /usr/share/postgresql/16/extension/vector* /opt/bitnami/postgresql/share/extension/
 
 RUN apt-get update \
   && apt-cache showpkg postgis \
