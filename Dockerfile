@@ -16,7 +16,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
        # ca-certificates: for accessing remote raster files;
        #   fix: https://github.com/postgis/docker-postgis/issues/307
-       ca-certificates postgis wget \
+       ca-certificates postgis postgresql-16-postgis-3 wget \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
